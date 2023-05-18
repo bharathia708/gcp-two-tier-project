@@ -1,0 +1,34 @@
+My project focuses on deploying a containerized two-tier architecture on Google Cloud Platform. 
+It involves a frontend application called "busapp" and a backend MySQL database. Here is a step-by-step description of the project:
+Setting up the necessary GCP resources:
+⦁	Created a GCP project to serve as the host project.
+⦁	Created two additional GCP projects to act as service projects, enabling resource sharing through a Shared VPC setup.
+⦁	Enabled the required APIs for each project, including GKE, IAM, Cloud Build, Cloud SQL, Cloud Spanner, and Stackdriver.
+Creating VPC networks and subnets:
+⦁	In the host project, established a Shared VPC network.
+⦁	Defined subnets within the Shared VPC network for the frontend and backend components.
+⦁	Configured firewall rules to allow necessary traffic between subnets and control network access.
+ Creating a GKE cluster:
+⦁	In the host project, created a GKE cluster to host the frontend and backend containers.
+⦁	Specified the desired configuration, such as the number of nodes, machine type, and network settings.
+⦁	Enabled Stackdriver for monitoring and logging options.
+Configuring IAM roles and permissions:
+⦁	Defined appropriate IAM roles for service accounts or user accounts interacting with GCP resources.
+⦁	Assigned the necessary IAM roles to the respective service accounts, granting permissions for accessing resources like GKE, Cloud SQL, and Cloud Spanner.
+Setting up Cloud SQL as the backend database:
+⦁	In the host project, created a Cloud SQL instance using MySQL as the database engine.
+⦁	Configured the instance with desired specifications, including machine type, storage capacity, and database credentials.
+⦁	Configured network connectivity to allow the GKE cluster to securely access the Cloud SQL instance.
+Cloud spanner:
+⦁	Setting up Cloud Spanner database for scalability and availability.
+
+Cloud build:
+⦁	Building the Docker image for the "busapp" application from the Dockerfile using Cloud Build and pushing it to GitHub.
+Stack driver:
+⦁	Configuring Stackdriver to monitor and log the "busapp" application. Additionally, 
+I set up an alert for my "busapp" application using GCP Stackdriver Alerting. When the cluster reaches the CPU threshold limit,
+I receive mail and SMS notifications through Stackdriver Alert. I manually performed this process using the 
+following command: "free > /dev/null &."
+Finally, I received an alert notification stating "ALRT CPU utilization at 0.913 on hopeful-history-385202 instance-1 - above 0.6."
+                                                                                                                                                   A project by
+                                                                                                                                Vairava bharathi arumugam
